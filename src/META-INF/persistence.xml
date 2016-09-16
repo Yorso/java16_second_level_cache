@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence 
+	http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
+	version="2.0" xmlns="http://java.sun.com/xml/ns/persistence">
+	
+	<persistence-unit name="helloworld" transaction-type="RESOURCE_LOCAL">
+		
+		<properties>
+			<!-- Database connection settings -->
+			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
+			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/helloworld" />
+			<property name="javax.persistence.jdbc.user" value="user1" />
+			<property name="javax.persistence.jdbc.password" value="user1pass" />
+
+			<!-- SQL dialect -->
+			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect" />
+			
+			<!-- Create/update tables automatically using mapping metadata -->
+			<property name="hibernate.hbm2ddl.auto" value="update" />
+			
+			<!-- Pretty print the SQL in the log file and console -->
+			<property name="hibernate.format_sql" value="true" />
+				
+			<!-- Not need mapping entities or resources as in hibernate.cfg.xml file. Hibernate is automatically going to detect them -->
+		
+			<!-- SECOND LEVEL CACHE CONFIGURATION -->
+			<property name="javax.persistence.sharedCache.mode" value="ENABLE_SELECTIVE"/> <!-- 
+																								'sharedCache.mode' means the mode of the second level cache which controls how the entity classes of the persistence unit (helloworld) become cacheable
+																						        'ENABLE_SELECTIVE' means we can cache entities selectively with @Cacheable annotation in entities we want to be cacheable (check Guide.java).
+																						   		'ALL' means that all entities are second level cache cacheable. Be careful, it could affect in a bad way the performance of the application 
+																						   	-->
+			<property name="hibernate.cache.region.factory_class" value="org.hibernate.cache.ehcache.EhCacheRegionFactory"/><!-- EhCacheRegionFactory is the provider of second level cache for building different regions to store different types of data -->
+		
+		</properties>
+	
+	</persistence-unit>
+	
+</persistence>

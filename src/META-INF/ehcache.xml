@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ehcache xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		 xsi:noNamespaceSchemaLocation="ehcache.xsd">
+
+	<!-- 
+		maxelementsInMemory="1000": This is for configure the maximum number of entries  of object data (Guide data) than you can have in this cache 
+		eternal="true": How long you have got those entries available in the cache region
+		overflowToDisk="false": Sets whether elements can overflow to disk when the memory store has reached the maxInMemory limit.
+	-->
+	
+	<cache name="com.jorge.entity.Guide"		 
+		   maxElementsInMemory="1000"
+		   eternal="true"
+		   overflowToDisk="false">
+	</cache>
+	
+	
+	<cache name="com.jorge.entity.Student"		 
+		   maxElementsInMemory="15000"
+		   eternal="true"
+		   overflowToDisk="false">
+	</cache>
+	
+	
+	<!-- Solution for association between Guide and several Students. Check Guide.java too -->
+	<cache name="com.jorge.entity.Guide.students"		 
+		   maxElementsInMemory="1000"
+		   eternal="true"
+		   overflowToDisk="false">
+	</cache>
+	
+</ehcache>
